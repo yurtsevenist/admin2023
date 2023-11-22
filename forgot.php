@@ -22,9 +22,9 @@
     </div>
     <div class="card-body">
       <p class="login-box-msg">E-Posta adresinizi girerek yeni şifrenizi alabilirsiniz.</p>
-      <form action="#" method="post">
+      <form action="php/forgotPost.php" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" name="email" required class="form-control" placeholder="Sistemde kayıtlı e-posta adresiniz">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
