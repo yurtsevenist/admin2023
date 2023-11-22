@@ -24,9 +24,9 @@
     <div class="card-body">
       <p class="login-box-msg">Oturum açmak için bilgilerinizi giriniz.</p>
 
-      <form action="#" method="post">
+      <form action="php/loginPost.php" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="E-Posta Adresiniz">
+          <input type="email" class="form-control" name="email" required placeholder="E-Posta Adresiniz">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Şifreniz">
+          <input type="password" class="form-control" name="password" required placeholder="Şifreniz">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
