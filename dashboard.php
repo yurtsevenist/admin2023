@@ -18,5 +18,6 @@ if(!(isset($_SESSION['access_key']) && $_SESSION["access_key"]=="abcd1234"))
 </head>
 <body>
    <h1>Burası yönetici sayfası</h1> 
+    <a class="btn btn-danger" href="php/logout.php">Oturumu Kapat</a>
 </body>
 </html>
