@@ -8,6 +8,7 @@ if(!(isset($_SESSION['access_key']) && $_SESSION["access_key"]=="abcd1234"))
     window.location.href='index.php';
     </script>";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
