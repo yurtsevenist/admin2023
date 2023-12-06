@@ -16,10 +16,15 @@ include "layouts/aside.php";
   $sorgu->execute(); 
   $kullanicisayisi=$sorgu->fetchColumn();
   //gelen mesajları alıyoruz
-  $sorgu=$baglanti->prepare("SELECT * FROM messages");
+  $sorgu=$baglanti->prepare("SELECT * FROM messages ORDER BY date DESC LIMIT 5");
   $sorgu->execute();
   $mesajlar=$sorgu-> fetchAll(PDO::FETCH_OBJ);
   $sira=1;
+   //kullanıcıları alıyoruz
+   $sorgu=$baglanti->prepare("SELECT * FROM users ORDER BY date DESC LIMIT 5");
+   $sorgu->execute();
+   $users=$sorgu-> fetchAll(PDO::FETCH_OBJ);
+   $sira2=1;
 ?>  <!-- Content Wrapper. Contains page content -->
   
   <!-- /.content-wrapper -->
@@ -137,10 +142,10 @@ include "layouts/aside.php";
                                                 <td><?=$mesaj->subject?></td>
                                                 <td><?=$mesaj->message?></td>
                                                 <td><?=$mesaj->date ?></td>
-                                                <td><?=$mesaj->status ?></td>
-                                                <td>
-                                                                                                    sil,cevapla
-                                            
+                                                <td><?php if($mesaj->status==0) { echo "<span class='text-danger'>Okunmadı</span>";} else { echo "<span class='text-info'>Cevaplandı</span>";}  ?></td>
+                                                <td style="width:80px;">
+                                                  <a href="#" class="btn btn-sm btn-info"><i class="fas fa-pen"></i></a>
+                                                  <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                          <?php } ?>   
@@ -170,7 +175,19 @@ include "layouts/aside.php";
                   </tr>
                   </thead>
                   <tbody>
-
+                  <?php foreach($users as $user) { ?>
+                                            <tr>
+                                                <td><?php echo $sira2++ ?></td>                                             
+                                                <td><?=$user->name?></td>
+                                                <td><?=$user->email?></td>
+                                                <td><?=$user->date?></td>
+                                                <td><?=$user->status ?></td>                                               
+                                                <td>
+                                                                                                    sil,güncelle,görüntüle
+                                            
+                                                </td>
+                                            </tr>
+                                         <?php } ?>   
                   </tbody>
                
                 </table>
