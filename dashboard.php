@@ -30,7 +30,7 @@ include "layouts/aside.php";
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="index.php">Anasayfa</a></li>             
+              <li class="breadcrumb-item"><a href="dashboard.php">Anasayfa</a></li>             
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -104,6 +104,62 @@ include "layouts/aside.php";
         </div>
         <!-- /.row -->
 
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Son Gelen Mesajlar</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Sıra</th>
+                    <th>İsim</th>
+                    <th>E-Posta</th>
+                    <th>Konu</th>
+                    <th>Mesaj</th>
+                    <th>Tarih</th>
+                    <th>Durum</th>
+                    <th>İşlem</th>
+                  </tr>
+                  </thead>
+                  <tbody></tbody>
+               
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+      </div>
+      <div class="col-md-6">
+      <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Son Kayıt Olan Kullanıcılar</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Sıra</th>
+                    <th>İsim</th>
+                    <th>E-Posta</th>                   
+                    <th>Tarih</th>
+                    <th>Durum</th>
+                    <th>İşlem</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+               
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+      </div>
     </div>
   </section>
 </div>
