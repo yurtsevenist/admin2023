@@ -181,9 +181,11 @@ include "layouts/aside.php";
                                                 <td><?=$user->name?></td>
                                                 <td><?=$user->email?></td>
                                                 <td><?=$user->date?></td>
-                                                <td><?=$user->status ?></td>                                               
+                                                <td><?php if($mesaj->status==0) { echo "<span class='text-danger'>Dondurulmuş</span>";} else { echo "<span class='text-info'>Aktif</span>";}  ?></td>                                           
                                                 <td>
-                                                                                                    sil,güncelle,görüntüle
+                                                <a href="#" class="btn btn-sm btn-info"><i class="fas fa-pen"></i></a>
+                                                <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                  <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>                                               
                                             
                                                 </td>
                                             </tr>
