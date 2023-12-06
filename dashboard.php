@@ -15,8 +15,10 @@ include "layouts/aside.php";
   $sorgu=$baglanti->prepare("SELECT count(*) as kullanicisayisi FROM users");
   $sorgu->execute(); 
   $kullanicisayisi=$sorgu->fetchColumn();
- 
-
+  //gelen mesajları alıyoruz
+  $sorgu=$baglanti->prepare("SELECT * FROM messages");
+  $sorgu->execute();
+  $mesajlar=$sorgu-> fetchAll(PDO::FETCH_OBJ);
 ?>  <!-- Content Wrapper. Contains page content -->
   
   <!-- /.content-wrapper -->
@@ -116,8 +118,7 @@ include "layouts/aside.php";
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Sıra</th>
-                    <th>İsim</th>
+                    <th>Sıra</th>                   
                     <th>E-Posta</th>
                     <th>Konu</th>
                     <th>Mesaj</th>
@@ -126,7 +127,22 @@ include "layouts/aside.php";
                     <th>İşlem</th>
                   </tr>
                   </thead>
-                  <tbody></tbody>
+                  <tbody>
+                  <?php foreach($mesajlar as $mesaj) { ?>
+                                            <tr>
+                                                <td>#</td>                                             
+                                                <td><?=$mesaj->email?></td>
+                                                <td><?=$mesaj->subject?></td>
+                                                <td><?=$mesaj->message?></td>
+                                                <td><?=$mesaj->date ?></td>
+                                                <td><?=$mesaj->status ?></td>
+                                                <td>
+                                                                                                    sil,cevapla
+                                            
+                                                </td>
+                                            </tr>
+                                         <?php } ?>   
+                  </tbody>
                
                 </table>
               </div>
