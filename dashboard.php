@@ -19,6 +19,7 @@ include "layouts/aside.php";
   $sorgu=$baglanti->prepare("SELECT * FROM messages");
   $sorgu->execute();
   $mesajlar=$sorgu-> fetchAll(PDO::FETCH_OBJ);
+  $sira=1;
 ?>  <!-- Content Wrapper. Contains page content -->
   
   <!-- /.content-wrapper -->
@@ -128,9 +129,10 @@ include "layouts/aside.php";
                   </tr>
                   </thead>
                   <tbody>
+                    
                   <?php foreach($mesajlar as $mesaj) { ?>
                                             <tr>
-                                                <td>#</td>                                             
+                                                <td><?php echo $sira++ ?></td>                                             
                                                 <td><?=$mesaj->email?></td>
                                                 <td><?=$mesaj->subject?></td>
                                                 <td><?=$mesaj->message?></td>
