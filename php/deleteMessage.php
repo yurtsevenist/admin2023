@@ -1,7 +1,7 @@
 <?php
  try{
     include "connect.php";
-    $id=$_POST['id'];
+    $id=$_POST['mid'];
 
     $kayit=$baglanti->prepare('DELETE FROM messages WHERE id = ?');
     $kayit->execute(array($id));

@@ -145,7 +145,7 @@ include "layouts/aside.php";
                                                 <td><?php if($mesaj->status==0) { echo "<span class='text-danger'>Okunmadı</span>";} else { echo "<span class='text-info'>Cevaplandı</span>";}  ?></td>
                                                 <td style="width:100px;">
                                                   <a href="#" class="btn btn-sm btn-info"><i class="fas fa-pen"></i></a>
-                                                  <a type="button" class="btn btn-sm btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal" id="<?php echo $mesaj->id ?>"><i class="fas fa-trash" title="Sil"></i></a>
+                                                  <a type="button" class="btn btn-sm btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteMessageModal" mid="<?php echo $mesaj->id ?>"><i class="fas fa-trash" title="Sil"></i></a>
                                                
                                             </tr>
                                          <?php } ?>   
@@ -185,7 +185,7 @@ include "layouts/aside.php";
                                                 <td style="width:150px;">
                                                 <a href="#" class="btn btn-sm btn-info"><i class="fas fa-pen"></i></a>
                                                 <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
-                                                  <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>                                               
+                                                <a type="button" class="btn btn-sm btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteUserModal" uid="<?php echo $user->id ?>"><i class="fas fa-trash" title="Sil"></i></a>                                              
                                             
                                                 </td>
                                             </tr>
@@ -202,7 +202,7 @@ include "layouts/aside.php";
 </div>
   <!-- Control Sidebar -->
 <!-- mesaj sil Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteMessageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-danger text-white">
@@ -215,7 +215,7 @@ include "layouts/aside.php";
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
          <form action="php/deleteMessage.php" method="POST">
-            <input type="hidden" name="id" id="id">
+            <input type="hidden" name="mid" id="mid">
             <button type="submit" class="btn btn-danger">Sil</button>
          </form>
       </div>
@@ -224,16 +224,47 @@ include "layouts/aside.php";
 </div>
 
 <script>
-        var mesajsil = document.getElementById('deleteModal')
+        var mesajsil = document.getElementById('deleteMessageModal')
         mesajsil.addEventListener('show.bs.modal', function(event) {
         var button = event.relatedTarget
-        var id = button.getAttribute('id')             
-        var modal_input=mesajsil.querySelector('#id')              
+        var id = button.getAttribute('mid')             
+        var modal_input=mesajsil.querySelector('#mid')              
         modal_input.value=id;
     })
 </script>
 <!-- mesaj sil Modal sonu -->
-
+<!-- user sil modal -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Kullanıcı Sil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Seçtiğiniz Kullanıcı Silinecektir, onaylıyormusunuz ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+         <form action="php/deleteUser.php" method="POST">
+            <input type="hidden" name="uid" id="uid"> 
+            <input type="hidden" name="session_email" value="<?php echo $_SESSION['email'] ?>">
+            <button type="submit" class="btn btn-danger">Sil</button>
+         </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+        var usersil = document.getElementById('deleteUserModal')
+        usersil.addEventListener('show.bs.modal', function(event) {
+        var button = event.relatedTarget
+        var id = button.getAttribute('uid')             
+        var modal_input=usersil.querySelector('#uid')              
+        modal_input.value=id;
+    })
+</script>
+<!-- user sil modal sonu -->
 <?php
 include "layouts/footer.php";
 ?>
