@@ -143,10 +143,10 @@ include "layouts/aside.php";
                                                 <td><?=$mesaj->message?></td>
                                                 <td><?=$mesaj->date ?></td>
                                                 <td><?php if($mesaj->status==0) { echo "<span class='text-danger'>Okunmadı</span>";} else { echo "<span class='text-info'>Cevaplandı</span>";}  ?></td>
-                                                <td style="width:80px;">
+                                                <td style="width:100px;">
                                                   <a href="#" class="btn btn-sm btn-info"><i class="fas fa-pen"></i></a>
-                                                  <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-                                                </td>
+                                                  <a type="button" class="btn btn-sm btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal" id="<?php echo $mesaj->id ?>"><i class="fas fa-trash" title="Sil"></i></a>
+                                               
                                             </tr>
                                          <?php } ?>   
                   </tbody>
@@ -182,7 +182,7 @@ include "layouts/aside.php";
                                                 <td><?=$user->email?></td>
                                                 <td><?=$user->date?></td>
                                                 <td><?php if($mesaj->status==0) { echo "<span class='text-danger'>Dondurulmuş</span>";} else { echo "<span class='text-info'>Aktif</span>";}  ?></td>                                           
-                                                <td>
+                                                <td style="width:150px;">
                                                 <a href="#" class="btn btn-sm btn-info"><i class="fas fa-pen"></i></a>
                                                 <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
                                                   <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>                                               
@@ -201,6 +201,38 @@ include "layouts/aside.php";
   </section>
 </div>
   <!-- Control Sidebar -->
+<!-- mesaj sil Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Mesaj Sil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Seçtiğiniz Mesaj Silinecektir, onaylıyormusunuz ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+         <form action="php/deleteMessage.php" method="POST">
+            <input type="hidden" name="id" id="id">
+            <button type="submit" class="btn btn-danger">Sil</button>
+         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+        var mesajsil = document.getElementById('deleteModal')
+        mesajsil.addEventListener('show.bs.modal', function(event) {
+        var button = event.relatedTarget
+        var id = button.getAttribute('id')             
+        var modal_input=mesajsil.querySelector('#id')              
+        modal_input.value=id;
+    })
+</script>
+<!-- mesaj sil Modal sonu -->
 
 <?php
 include "layouts/footer.php";
