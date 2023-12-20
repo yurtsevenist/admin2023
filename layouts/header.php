@@ -29,6 +29,8 @@ if(!(isset($_SESSION['access_key']) && $_SESSION["access_key"]=="abcd1234"))
     <link rel="stylesheet" href="tema/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="tema/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="tema/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="tema/plugins/summernote/summernote-bs4.min.css">
 </head>
 <!--
 `body` tag options:

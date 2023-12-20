@@ -79,7 +79,18 @@
 <script src="tema/plugins/bootstrap-tooltip.js"></script>
      <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-     
-    
+<script src="tema/plugins/summernote/summernote-bs4.min.js"></script>    
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+    // CodeMirror
+    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      mode: "htmlmixed",
+      theme: "monokai"
+    });
+  })
+</script>  
 </body>
 </html>
