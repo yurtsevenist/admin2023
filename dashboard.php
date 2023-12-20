@@ -144,7 +144,7 @@ include "layouts/aside.php";
                                                 <td><?=$mesaj->date ?></td>
                                                 <td><?php if($mesaj->status==0) { echo "<span class='text-danger'>Okunmadı</span>";} else { echo "<span class='text-info'>Cevaplandı</span>";}  ?></td>
                                                 <td style="width:100px;">
-                                                  <a href="#" class="btn btn-sm btn-info"><i class="fas fa-pen"></i></a>
+                                                  <a href="mesajcevap.php?id=<?=$mesaj->id?>" class="btn btn-sm btn-info"><i class="fas fa-pen"></i></a>
                                                   <a type="button" class="btn btn-sm btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteMessageModal" mid="<?php echo $mesaj->id ?>"><i class="fas fa-trash" title="Sil"></i></a>
                                                
                                             </tr>

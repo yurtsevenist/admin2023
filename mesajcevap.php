@@ -1,5 +1,19 @@
 
 <?php
+include "php/connect.php";
+$id=$_GET['id'];
+$sorgu=$baglanti->prepare("SELECT * FROM messages WHERE id=?");
+$sorgu->execute(array($id));
+foreach($sorgu as $satir)
+{       
+   
+    $email=$satir["email"]; 
+    $mid=$satir["id"];
+    $subject=$satir["subject"];
+    $message=$satir["message"];
+   
+                   
+}
 include "layouts/header.php";
 include "layouts/aside.php";
 ?>  <!-- Content Wrapper. Contains page content -->
@@ -31,27 +45,26 @@ include "layouts/aside.php";
         <div class="card-body row">
        
           <div class="col-12 col-md-6 offset-md-3">
-            <div class="form-group">
-              <label for="inputName">Adı Soyadı</label>
-              <input type="text" id="inputName" name="name" readonly class="form-control" />
-            </div>
+            
             <div class="form-group">
               <label for="inputEmail">E-Posta</label>
-              <input type="email" id="inputEmail" name="email" readonly class="form-control" />
+              <input type="email" id="inputEmail" name="email" value="<?php echo $email ?>" readonly class="form-control" />
             </div>
             <div class="form-group">
               <label for="inputSubject">Konu</label>
-              <input type="text" id="inputSubject" name="subject" readonly class="form-control" />
+              <input type="text" id="inputSubject" name="subject"  value="<?php echo $subject ?>" readonly class="form-control" />
             </div>
             <div class="form-group">
               <label for="inputMessage">Mesaj</label>
-              <textarea id="inputMessage" class="form-control" name="message" readonly rows="2"></textarea>
+              <textarea id="inputMessage" class="form-control" name="message"   readonly rows="2">
+              <?php echo $message ?>
+              </textarea>
             </div>
-            <form action="#" method="POST" >
-            <input type="hidden" name="id">
+            <form action="php/mesajcevapPost.php" method="POST" >
+            <input type="hidden" name="id"  value="<?php echo $mid ?>">
             <div class="form-group">
             <label for="inputName">Cevabınız</label>
-              <textarea id="summernote" name="cevap" rows="4" >
+              <textarea id="summernote" name="answer" rows="4" >
                  Cevabınızı buraya yazabilirsiniz...
               </textarea>
             </div>
